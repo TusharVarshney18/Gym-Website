@@ -1,0 +1,74 @@
+/* Root Variables */
+:root {
+  --color-primary: #ff9800;
+  --color-secondary: #333;
+  --color-text-light: white;
+  --font-family: "Arial", sans-serif;
+  --spacing: 20px;
+}
+
+/* Video Section */
+.video-section {
+  text-align: center;
+  padding: clamp(30px, 5vw, 50px) var(--spacing);
+  background-color: var(--color-secondary);
+  font-family: var(--font-family);
+}
+
+.video-title {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing);
+  text-transform: uppercase;
+}
+
+/* Video Grid Layout */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing);
+  justify-content: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: var(--spacing);
+}
+
+.video-player {
+  max-width: 100%;
+}
+
+/* Video Container */
+.video-container {
+  max-width: 100%;
+  background: black;
+  padding: clamp(8px, 1vw, 10px);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+
+.video-container iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  border: none;
+}
+
+/* Caption */
+.video-caption {
+  color: var(--color-text-light);
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .video-title {
+    font-size: 20px;
+  }
+
+  .video-container iframe {
+    aspect-ratio: 4 / 3;
+  }
+}

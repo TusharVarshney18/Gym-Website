@@ -1,0 +1,116 @@
+:root {
+  --color-primary: #ff9800;
+  --color-secondary: #333;
+  --color-text-light: white;
+  --font-family: "Arial", sans-serif;
+}
+
+.gallary-section {
+  display: flex;
+  flex-direction: column; /* Default to column for smaller screens */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  min-height: 100vh;
+  max-width: 100%;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.gallary-text h1 {
+  font-size: 2rem; /* Adjusted for smaller screens */
+  font-weight: bold;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.Learnmore-btn {
+  background-color: var(--color-text-light);
+  color: var(--color-secondary);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.Learnmore-btn:hover {
+  background-color: #ffcc80;
+  transform: scale(1.05);
+}
+
+.gallary-img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px; /* Add rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  transition: transform 0.3s ease;
+}
+
+.gallary-img:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+@media screen and (max-width: 600px) {
+  .gallary-section {
+    padding: 1rem; /* Less padding for smaller screens */
+  }
+
+  .gallary-image {
+    max-width: 100%; /* Full width for smaller screens */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .gallary-image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .gallary-text h1 {
+    font-size: 1.5rem; /* Smaller font size for smaller screens */
+  }
+
+  .Learnmore-btn {
+    font-size: 0.875rem; /* Smaller button text for smaller screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .gallary-img {
+    width: 500px;
+    height: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallary-img {
+    width: 800px;
+  }
+}
+
+/* Media Queries for responsiveness */
+@media (min-width: 768px) {
+  .gallary-section {
+    flex-direction: row;
+  }
+
+  .gallary-text h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallary-section {
+    padding: 4rem; /* More padding for larger screens */
+  }
+
+  .Learnmore-btn {
+    font-size: 1.25rem; /* Larger button text for bigger screens */
+  }
+}

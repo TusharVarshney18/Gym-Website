@@ -1,0 +1,97 @@
+:root {
+  --color-primary: #ff9800;
+  --color-secondary: #333;
+  --color-text-light: white;
+  --font-family: "Arial", sans-serif;
+}
+.amenities-container {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 4rem 4rem;
+  min-height: 100vh;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 400px) {
+  .amenities-container {
+    padding: 2rem 1rem;
+  }
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.amenity-card {
+  background: #111;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.icon-wrapper {
+  margin-bottom: 1rem;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}
+
+.red {
+  color: red;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.blue {
+  color: blue;
+}
+
+.green {
+  color: green;
+}
+
+.amenity-title {
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.amenity-description {
+  color: #bbb;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.get-started {
+  background-color: var(--color-primary);
+  color: black;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.get-started:hover {
+  background-color: #ffcc80;
+  transform: scale(1.05);
+  transition: background 0.3s, transform 0.3s;
+}

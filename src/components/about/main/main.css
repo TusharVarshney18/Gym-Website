@@ -1,0 +1,138 @@
+:root {
+  --color-primary: #ff9800;
+  --color-secondary: #333;
+  --color-text-light: white;
+  --font-family: "Arial", sans-serif;
+}
+
+.about-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  color: white;
+  padding: 50px;
+  max-width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+.about-section-content {
+  width: 50%;
+  padding-right: 20px;
+}
+
+.about-section-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.about-section p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.about-section-image {
+  width: 40%;
+}
+
+.about-section-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0px 0px 15px rgba(211, 255, 0, 0.5); /* Soft Neon Glow */
+}
+
+.about-section-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 100px);
+}
+
+.gym-center-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.page-number {
+  font-size: 14px;
+  font-weight: bold;
+  color: #d3ff00;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .about-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-section-content {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .about-section-image {
+    width: 80%;
+    margin-top: 20px;
+  }
+
+  .about-section-footer {
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 30px;
+  }
+
+  .about-section-title {
+    font-size: 28px;
+  }
+
+  .about-section p {
+    font-size: 14px;
+  }
+
+  .about-section-image {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 20px;
+  }
+
+  .about-section-title {
+    font-size: 24px;
+  }
+
+  .about-section p {
+    font-size: 12px;
+  }
+
+  .about-section-footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .gym-center-name,
+  .page-number {
+    font-size: 12px;
+  }
+}
