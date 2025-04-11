@@ -6,14 +6,14 @@ import SuccessStory from "../../pages/successStory/successStory";
 import Footer from "../../pages/footer/footer";
 import Coursel from "../../pages/coursel/coursel";
 
-const Home = () => {
+const Home = ({ isWideScreen }) => {
   return (
     <>
-      <Header />
-      <Gallary />
+      <Header isWideScreen={isWideScreen} />
+      <Gallary isWideScreen={isWideScreen} />
       <Equipment />
       <Coursel />
-      <ClassStudio />
+      <ClassStudio isWideScreen={isWideScreen} />
       <SuccessStory />
       <Footer />
     </>

@@ -1,17 +1,7 @@
 import React from "react";
 import "./gallary.css";
 
-const Gallary = () => {
-  const [isWideScreen, setIsWideScreen] = React.useState(
-    window.innerWidth > 600
-  );
-
-  React.useEffect(() => {
-    const handleResize = () => setIsWideScreen(window.innerWidth > 600);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
+const Gallary = ({ isWideScreen }) => {
   return (
     <>
       <div className="gallary-section">
@@ -24,6 +14,7 @@ const Gallary = () => {
                 : "https://images.unsplash.com/photo-1546817372-628669db4655?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NHxlZEM1SGgtZTNNWXx8ZW58MHx8fHx8"
             }
             alt="gallery-image"
+            loading="lazy"
           />
         </div>
 

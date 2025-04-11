@@ -1,17 +1,7 @@
 import React from "react";
 import "./classStudio.css";
 
-const ClassStudio = () => {
-  const [isWideScreen, setIsWideScreen] = React.useState(
-    window.innerWidth > 600
-  );
-
-  React.useEffect(() => {
-    const handleResize = () => setIsWideScreen(window.innerWidth > 600);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
+const ClassStudio = ({ isWideScreen }) => {
   return (
     <div className="class-studio-container">
       <div className="class-studio-content">

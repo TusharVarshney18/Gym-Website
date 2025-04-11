@@ -1,17 +1,7 @@
 import React from "react";
 import "./header.css";
 
-const Header = () => {
-  const [isWideScreen, setIsWideScreen] = React.useState(
-    window.innerWidth > 600
-  );
-
-  React.useEffect(() => {
-    const handleResize = () => setIsWideScreen(window.innerWidth > 600);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
+const Header = ({ isWideScreen }) => {
   return (
     <>
       <section className="hero">

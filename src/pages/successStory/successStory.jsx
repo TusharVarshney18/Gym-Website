@@ -40,6 +40,7 @@ const SuccessStory = () => {
                 src={testimonial.image}
                 alt="Testimonial"
                 className="testimonial-image"
+                loading="lazy"
               />
               <p className="testimonial-text">
                 "Boost your{" "}
