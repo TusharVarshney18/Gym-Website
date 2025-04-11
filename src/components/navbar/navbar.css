@@ -24,6 +24,12 @@
   animation: slideDown 1s ease-in-out;
 }
 
+@media (max-width: 600px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+}
+
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -98,6 +104,15 @@
   animation: fadeInLinks 1s ease-in-out;
 }
 
+.nav-links a:active {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 4px;
+  color: var(--color-accent);
+  font-weight: bold;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
 @keyframes fadeInLinks {
   from {
     opacity: 0;
@@ -120,6 +135,7 @@
   text-underline-offset: 4px;
   color: var(--color-accent);
   font-weight: bold;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
 }
 
 .hamburger {
