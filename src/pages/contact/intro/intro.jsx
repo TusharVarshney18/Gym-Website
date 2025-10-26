@@ -4,39 +4,42 @@ import { FaEnvelope, FaFacebook, FaYoutube } from "react-icons/fa";
 
 const Intro = () => {
   return (
-    <div className="gym-container">
-      <div className="gym-header">
+    <section className="gym-container" aria-label="Astraeus Fitness hero">
+      <header className="gym-header">
         <h1>
           ASTRAEUS
           <br />
           FITNESS GYM
         </h1>
-        <div className="social-icons">
-          <a href="#">
-            <FaEnvelope />
+
+        <nav className="social-icons" aria-label="Social links">
+          <a href="#" aria-label="Email Astraeus Fitness">
+            <FaEnvelope aria-hidden="true" focusable="false" />
           </a>
-          <a href="#">
-            <FaFacebook />
+          <a href="#" aria-label="Astraeus on Facebook">
+            <FaFacebook aria-hidden="true" focusable="false" />
           </a>
-          <a href="#">
-            <FaYoutube />
+          <a href="#" aria-label="Astraeus on YouTube">
+            <FaYoutube aria-hidden="true" focusable="false" />
           </a>
-        </div>
-      </div>
+        </nav>
+      </header>
 
       <div className="gym-content">
         <div className="images">
           <img
             src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600"
-            alt="Workout 1"
+            alt="Athlete lifting barbell"
+            loading="lazy"
           />
           <img
             src="https://images.pexels.com/photos/6456209/pexels-photo-6456209.jpeg?auto=compress&cs=tinysrgb&w=600"
-            alt="Workout 2"
+            alt="Coach assisting client"
+            loading="lazy"
           />
         </div>
 
-        <div className="sidebar">
+        <aside className="sidebar" aria-label="Quick links">
           <div className="sidebar-box">
             <h3>WHAT WE DO</h3>
             <p>Our effective and holistic approach to fitness.</p>
@@ -61,9 +64,9 @@ const Intro = () => {
             <h3>CONTACT US</h3>
             <p>Get in touch for inquiries and other concerns.</p>
           </div>
-        </div>
+        </aside>
       </div>
-    </div>
+    </section>
   );
 };
 

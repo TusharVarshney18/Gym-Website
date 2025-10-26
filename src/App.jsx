@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import Navbar from "./components/navbar/navbar";
-import Home from "./components/home/home";
-import Contact from "./components/contact/contact";
-import About from "./components/about/about";
+import Home from "./pages/home/home";
+import Contact from "./pages/contact/contact";
+import About from "./pages/about/about";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Disclaimer from "./pages/disclaimer/disclaimer";
 
 function App() {
   const [isWideScreen, setIsWideScreen] = React.useState(
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Home isWideScreen={isWideScreen} />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
         </Routes>
       </BrowserRouter>
     </div>

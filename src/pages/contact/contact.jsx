@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Intro from "./intro/intro";
-import Footer from "../../pages/footer/footer";
+import Footer from "../../components/footer/footer";
 import "./contact.css";
 
 const Contact = () => {
@@ -33,43 +33,62 @@ const Contact = () => {
       >
         <h2 id="contact-heading">Get in Touch</h2>
         <p>We'd love to hear from you! Please fill out the form below.</p>
-        <form onSubmit={handleSubmit} className="contact-form">
+        <form onSubmit={handleSubmit} className="contact-form" noValidate>
           <div className="form-group">
-            <label htmlFor="name">Name</label>
             <input
               type="text"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder="Enter your name"
+              placeholder=" "
+              aria-describedby="name_help"
               required
             />
+            <label htmlFor="name">Name</label>
+            <div id="name_help" className="helper-text">
+              Please enter your full name.
+            </div>
+            {/* <div id="name_error" className="error-text" role="alert">Name is required.</div> */}
           </div>
+
           <div className="form-group">
-            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Enter your email"
+              placeholder=" "
+              aria-describedby="email_help"
               required
             />
+            <label htmlFor="email">Email</label>
+            <div id="email_help" className="helper-text">
+              We never share your email.
+            </div>
+            {/* <div id="email_error" className="error-text" role="alert" aria-live="polite">Enter a valid email.</div> */}
           </div>
-          <div className="form-group">
-            <label htmlFor="message">Message</label>
+
+          <div className="form-group full">
             <textarea
               id="message"
               name="message"
               value={formData.message}
               onChange={handleChange}
-              placeholder="Write your message here"
+              placeholder=" "
+              aria-describedby="message_help"
               required
-            ></textarea>
+            />
+            <label htmlFor="message">Message</label>
+            <div id="message_help" className="helper-text">
+              What can we help you with?
+            </div>
           </div>
-          <button type="submit">Send Message</button>
+
+          <div className="form-actions">
+            <button type="submit">Send Message</button>
+          </div>
         </form>
       </div>
 

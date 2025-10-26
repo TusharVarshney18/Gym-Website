@@ -1,0 +1,144 @@
+/* header.css */
+
+:root {
+  --color-background: #000000;
+  --color-text: #ffffff;
+  --color-accent: #ff9800;
+  --color-hover: #ffcc80;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hero {
+  position: relative;
+  max-width: 1200px;
+  margin: clamp(16px, 5vw, 60px) auto;
+  padding: 0 clamp(16px, 4vw, 28px);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: clamp(16px, 4vw, 28px);
+  color: var(--color-text);
+}
+
+/* Mobile stack */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Headline + CTA */
+.hero-text h1 {
+  margin: 0 0 clamp(12px, 2.5vw, 18px) 0;
+  font-size: clamp(28px, 6vw, 64px);
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+/* Gradient keyword */
+.hero-text h1 span {
+  background: linear-gradient(90deg, var(--color-accent), var(--color-hover));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px
+    color-mix(in oklab, var(--color-accent) 35%, transparent);
+}
+
+/* CTA button (glass/gradient) */
+.sign-up-btn {
+  appearance: none;
+  border: 1px solid color-mix(in oklab, var(--color-accent) 45%, transparent);
+  border-radius: 14px;
+  padding: 12px 18px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: #0d0d0d;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-hover));
+  box-shadow: 0 10px 24px
+      color-mix(in oklab, var(--color-accent) 40%, transparent),
+    var(--box-shadow);
+  cursor: pointer;
+  transition: transform 140ms ease, filter 140ms ease, box-shadow 140ms ease;
+}
+
+.sign-up-btn:hover {
+  transform: translateY(-1px);
+  filter: saturate(1.06);
+  box-shadow: 0 14px 32px
+    color-mix(in oklab, var(--color-accent) 55%, transparent);
+}
+
+.sign-up-btn:active {
+  transform: translateY(0);
+}
+
+/* Focus-visible for accessibility */
+.sign-up-btn:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 3px
+      color-mix(in oklab, var(--color-accent) 45%, transparent),
+    0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Media side */
+.hero-image {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+  background: color-mix(in oklab, rgba(255, 255, 255, 0.06) 60%, transparent);
+  backdrop-filter: blur(10px) saturate(125%);
+  -webkit-backdrop-filter: blur(10px) saturate(125%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), var(--box-shadow);
+}
+
+.hero-image img {
+  width: 100%;
+  height: clamp(260px, 40vw, 520px);
+  display: block;
+  object-fit: cover;
+  filter: saturate(108%);
+  transition: transform 240ms ease, filter 240ms ease;
+  /* soft mask for stylized edge */
+  mask-image: radial-gradient(140% 100% at 100% 0%, #000 70%, transparent 100%);
+  -webkit-mask-image: radial-gradient(
+    140% 100% at 100% 0%,
+    #000 70%,
+    transparent 100%
+  );
+}
+
+.hero-image:hover img {
+  transform: scale(1.03);
+  filter: saturate(120%);
+}
+
+/* Info bubble (glass tooltip) */
+.info-bubble {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  max-width: min(70%, 380px);
+  padding: 10px 12px;
+  font-size: clamp(12px, 1.9vw, 14px);
+  line-height: 1.45;
+  color: var(--color-text);
+  background: color-mix(in oklab, rgba(255, 255, 255, 0.08) 60%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-text) 12%, transparent);
+  border-radius: 12px;
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .sign-up-btn,
+  .hero-image img {
+    transition: none !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,17 @@
+.animatedscroll {
+  height: 10px;
+  background-color: salmon;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  scale: 0 1;
+  animation: animatedscroll linear;
+  animation-timeline: scroll();
+}
+
+@keyframes animatedscroll {
+  to {
+    scale: 1 1;
+  }
+}

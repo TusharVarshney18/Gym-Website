@@ -1,0 +1,282 @@
+/* intro.css */
+
+/* Uses your theme variables */
+:root {
+  --color-background: #000000;
+  --color-text: white;
+  --color-accent: #ff9800;
+  --color-hover: #ffcc80;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  --surface: color-mix(in oklab, var(--color-background) 70%, #111);
+  --glass: color-mix(in oklab, var(--color-background) 35%, transparent);
+  --muted: color-mix(in oklab, var(--color-text) 70%, #8a8a8a);
+  --ring: color-mix(in oklab, var(--color-accent) 60%, transparent);
+}
+
+/* Page container: layered hero */
+.gym-container {
+  position: relative;
+  min-height: 100svh;
+  color: var(--color-text);
+  background: radial-gradient(
+      1200px 600px at 10% 10%,
+      color-mix(in oklab, var(--color-accent) 22%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      1400px 700px at 90% 10%,
+      color-mix(in oklab, var(--color-hover) 18%, transparent),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--color-background) 92%, #0b0b0b),
+      var(--color-background)
+    );
+  overflow: clip;
+  isolation: isolate;
+}
+
+/* Animated ambient blobs */
+.gym-container::before,
+.gym-container::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 55vmax;
+  height: 55vmax;
+  filter: blur(60px);
+  opacity: 0.18;
+  transform: translate3d(0, 0, 0);
+  animation: floatBlob 18s ease-in-out infinite alternate;
+}
+
+.gym-container::before {
+  top: -15vmax;
+  left: -10vmax;
+  background: radial-gradient(
+    closest-side,
+    var(--color-accent),
+    transparent 70%
+  );
+}
+
+.gym-container::after {
+  bottom: -18vmax;
+  right: -12vmax;
+  background: radial-gradient(
+    closest-side,
+    var(--color-hover),
+    transparent 70%
+  );
+  animation-delay: 1.2s;
+}
+
+@keyframes floatBlob {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(2.5vmax, -2vmax, 0);
+  }
+}
+
+/* Header / hero stack */
+.gym-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(20px, 3.5vw, 40px) clamp(16px, 4vw, 28px);
+  display: grid;
+  align-items: center;
+  gap: clamp(16px, 2.5vw, 28px);
+}
+
+/* Glass headline card */
+.gym-header h1 {
+  width: fit-content;
+  margin: 0;
+  padding: clamp(14px, 2vw, 22px) clamp(18px, 2.5vw, 28px);
+  line-height: 1.02;
+  font-weight: 900;
+  font-size: clamp(36px, 6vw, 92px);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  background: color-mix(in oklab, var(--glass) 72%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+  border-radius: 18px;
+  backdrop-filter: blur(14px) saturate(125%);
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Accent underline */
+.gym-header h1::after {
+  content: "";
+  display: block;
+  width: clamp(80px, 16vw, 220px);
+  height: 4px;
+  margin-top: clamp(8px, 1vw, 12px);
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-hover));
+  box-shadow: 0 0 24px color-mix(in oklab, var(--ring) 60%, transparent);
+}
+
+/* Social icons row */
+.social-icons {
+  display: flex;
+  gap: clamp(10px, 1.5vw, 16px);
+  align-items: center;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(40px, 4.2vw, 48px);
+  height: clamp(40px, 4.2vw, 48px);
+  border-radius: 12px;
+  color: var(--color-text);
+  background: color-mix(in oklab, var(--glass) 65%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+  box-shadow: var(--box-shadow);
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.social-icons a:hover {
+  background: color-mix(in oklab, var(--color-accent) 18%, var(--glass));
+  box-shadow: 0 8px 26px color-mix(in oklab, var(--ring) 65%, transparent);
+  transform: translateY(-2px);
+}
+
+.social-icons a:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 3px
+      color-mix(in oklab, var(--color-accent) 45%, transparent),
+    var(--box-shadow);
+}
+
+/* Main content layout */
+.gym-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 28px) clamp(28px, 5vw, 48px);
+  display: grid;
+  gap: clamp(18px, 3vw, 28px);
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+/* Fallback for small screens */
+@media (max-width: 900px) {
+  .gym-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Modern container query for refinement */
+.gym-content {
+  container-type: inline-size;
+  container-name: content;
+}
+
+@container content (max-width: 700px) {
+  .images {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* Image gallery with 3D hover tilt */
+.images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 2.4vw, 20px);
+  perspective: 1200px;
+}
+
+.images img {
+  width: 100%;
+  height: clamp(220px, 32vw, 420px);
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+  background: var(--surface);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  transform-style: preserve-3d;
+  transition: transform 240ms ease, box-shadow 240ms ease, filter 240ms ease;
+}
+
+.images img:hover {
+  transform: rotateX(6deg) rotateY(-6deg) translateZ(10px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  filter: saturate(115%);
+}
+
+/* Sidebar cards grid */
+.sidebar {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(10px, 1.8vw, 14px);
+}
+
+.sidebar-box {
+  padding: clamp(14px, 2.1vw, 18px) clamp(14px, 2.1vw, 18px);
+  border-radius: 16px;
+  background: color-mix(in oklab, var(--glass) 72%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+  backdrop-filter: blur(12px) saturate(130%);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
+  box-shadow: var(--box-shadow);
+  transition: transform 160ms ease, background 160ms ease,
+    border-color 160ms ease;
+}
+
+.sidebar-box:hover {
+  transform: translateY(-2px);
+  background: color-mix(in oklab, var(--color-hover) 10%, var(--glass));
+  border-color: color-mix(in oklab, var(--color-accent) 26%, transparent);
+}
+
+.sidebar-box h3 {
+  margin: 0 0 6px 0;
+  font-size: clamp(14px, 1.4vw, 15px);
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: var(--color-hover);
+}
+
+.sidebar-box p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(13px, 1.35vw, 14px);
+  line-height: 1.5;
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce) {
+  .gym-container::before,
+  .gym-container::after,
+  .images img,
+  .social-icons a,
+  .sidebar-box {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* High-contrast focus utilities */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 3px
+    color-mix(in oklab, var(--color-accent) 45%, transparent);
+}
+
+/* Small helpers for better text rendering */
+.gym-container,
+.gym-container * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

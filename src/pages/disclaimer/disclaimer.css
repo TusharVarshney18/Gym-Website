@@ -1,0 +1,127 @@
+:root {
+  --color-background: #000000;
+  --color-text: white;
+  --color-accent: #ff9800;
+  --color-hover: #ffcc80;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.legal-page {
+  max-width: 900px;
+  margin: clamp(16px, 6vw, 64px) auto;
+  padding: 0 clamp(16px, 4vw, 24px);
+  color: var(--color-text);
+}
+
+/* Glass wrapper for the legal content */
+.disclaimer-card {
+  background: color-mix(in oklab, rgba(255, 255, 255, 0.06) 60%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+  border-radius: 18px;
+  backdrop-filter: blur(12px) saturate(125%);
+  -webkit-backdrop-filter: blur(12px) saturate(125%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), var(--box-shadow);
+  padding: clamp(18px, 3.5vw, 28px);
+}
+
+/* Headings */
+.disclaimer-card h1 {
+  margin: 0 0 10px 0;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  font-size: clamp(28px, 5.2vw, 44px);
+}
+
+.disclaimer-card h2 {
+  margin: clamp(16px, 3vw, 24px) 0 8px 0;
+  font-weight: 800;
+  font-size: clamp(18px, 3.6vw, 22px);
+  color: var(--color-hover);
+}
+
+/* Body copy with readable measure and spacing */
+.disclaimer-card p,
+.disclaimer-card li {
+  color: color-mix(in oklab, var(--color-text) 80%, #a2a8af);
+  line-height: 1.7;
+  font-size: clamp(14px, 2.7vw, 16px);
+  max-width: 70ch;
+  text-wrap: pretty;
+}
+
+.disclaimer-card p + p {
+  margin-top: 10px;
+}
+
+/* Lists */
+.disclaimer-card ul {
+  padding-left: 1.2rem;
+  margin: 8px 0 0 0;
+}
+
+/* Callout/notice blocks */
+.notice {
+  margin: clamp(12px, 3vw, 18px) 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: color-mix(
+    in oklab,
+    var(--color-accent) 8%,
+    rgba(255, 255, 255, 0.06)
+  );
+  border: 1px dashed color-mix(in oklab, var(--color-accent) 35%, transparent);
+  box-shadow: 0 2px 10px
+    color-mix(in oklab, var(--color-accent) 20%, transparent);
+}
+
+.notice strong {
+  color: var(--color-hover);
+  font-weight: 800;
+}
+
+/* Links */
+.disclaimer-card a {
+  color: var(--color-hover);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.disclaimer-card a:hover {
+  color: var(--color-accent);
+}
+
+/* Small meta/footer line */
+.disclaimer-meta {
+  margin-top: clamp(16px, 3.5vw, 22px);
+  color: color-mix(in oklab, var(--color-text) 65%, #8f969d);
+  font-size: 0.92rem;
+}
+
+/* Print-friendly tweaks */
+@media print {
+  .legal-page {
+    max-width: none;
+    margin: 0;
+    padding: 0 12mm;
+    color: #000;
+  }
+  .disclaimer-card {
+    background: #fff !important;
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  .disclaimer-card a {
+    color: #0645ad;
+  }
+}
+
+/* Reduced motion safety */
+@media (prefers-reduced-motion: reduce) {
+  .disclaimer-card,
+  .notice {
+    transition: none !important;
+  }
+}

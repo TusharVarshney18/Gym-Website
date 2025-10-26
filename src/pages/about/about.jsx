@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "../../pages/footer/footer";
+import Footer from "../../components/footer/footer";
 import AboutHeader from "./about-header/about-header";
 import Main from "./main/main";
 import Workout from "./workout-section/workout";

@@ -1,4 +1,4 @@
-/* navbar.css */
+/* Expect these in a global stylesheet:
 :root {
   --color-background: #000000;
   --color-text: white;
@@ -6,184 +6,187 @@
   --color-hover: #ffcc80;
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+*/
 
+/* Navbar wrapper */
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--color-background);
-  color: var(--color-text);
-  padding: 1.5rem 2rem;
-  box-sizing: border-box;
-  box-shadow: var(--box-shadow);
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  animation: slideDown 1s ease-in-out;
+  height: 64px;
+  background: color-mix(in oklab, var(--color-background) 90%, transparent);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--box-shadow);
 }
 
-@media (max-width: 600px) {
-  .navbar {
-    padding: 1rem 1.5rem;
-  }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.navbar:hover {
-  background-color: #111111;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-}
-
+/* Container layout */
 .navbar-container {
-  display: inline-flex;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
-  width: 100%;
-  height: 60px;
-  margin: 0 auto;
-  background-color: var(--color-background);
 }
 
-@media (max-width: 400px) {
-  .navbar-container {
-    height: 40px;
-    width: 100%;
-  }
+/* Logo */
+.logo {
+  color: var(--color-text);
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: 0.3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
 }
 
-.navbar-logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.navbar-logo:hover {
-  transform: scale(1.1);
-  color: var(--color-accent);
-}
-
+/* Links baseline (desktop) */
 .nav-links {
   display: flex;
-  gap: 2rem;
-  list-style: none;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Individual link */
+.nav-link {
+  position: relative;
   text-decoration: none;
+  color: color-mix(in oklab, var(--color-text) 75%, gray);
+  font-weight: 600;
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: color 180ms ease, background 180ms ease;
+  outline: none;
+}
+
+/* Hover state uses your hover color as a soft background */
+.nav-link:hover {
   color: var(--color-text);
-  cursor: pointer;
+  background: color-mix(in oklab, var(--color-hover) 16%, transparent);
 }
 
-@media (max-width: 400px) {
-  .nav-links {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    height: auto;
-  }
+/* Underline accent on hover/active */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-hover));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease;
 }
 
-.nav-links a {
-  text-decoration: none;
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Active route class (pair with NavLink) */
+.nav-link.active {
   color: var(--color-text);
-  font-size: 1rem;
-  transition: color 0.3s ease, transform 0.3s ease;
-  padding: 0.5rem 1rem;
-  animation: fadeInLinks 1s ease-in-out;
+  background: color-mix(in oklab, var(--color-accent) 14%, transparent);
 }
 
-.nav-links a:active {
-  text-decoration: underline;
-  text-decoration-color: var(--color-accent);
-  text-underline-offset: 4px;
-  color: var(--color-accent);
-  font-weight: bold;
-  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+.nav-link.active::after {
+  transform: scaleX(1);
 }
 
-@keyframes fadeInLinks {
-  from {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.nav-links a:hover {
-  color: var(--color-accent);
-  transform: translateY(-3px);
-}
-
-.nav-link :active {
-  text-decoration: underline;
-  text-decoration-color: var(--color-accent);
-  text-underline-offset: 4px;
-  color: var(--color-accent);
-  font-weight: bold;
-  transition: color 0.3s ease, text-decoration-color 0.3s ease;
-}
-
+/* Hamburger button (hidden on desktop) */
 .hamburger {
   display: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+  font-size: 26px;
   color: var(--color-text);
-  transition: transform 0.3s ease;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: background 180ms ease, transform 180ms ease;
+  user-select: none;
 }
 
 .hamburger:hover {
-  transform: rotate(90deg);
+  background: color-mix(in oklab, var(--color-hover) 16%, transparent);
 }
 
+.hamburger:active {
+  transform: scale(0.96);
+}
+
+/* Responsive collapse at 768px */
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: var(--color-background);
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 100%;
-    padding: 1rem 0;
-    box-shadow: var(--box-shadow);
-    transition: transform 0.3s ease;
-  }
-
-  .nav-links.active {
-    display: flex;
-    transform: translateY(0);
-  }
-
   .hamburger {
     display: block;
   }
+
+  /* Turn into a slide-down panel */
+  .nav-links {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    display: grid;
+    gap: 8px;
+    padding: 16px;
+    background: color-mix(in oklab, var(--color-background) 96%, transparent);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transform: translateY(-12px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 220ms ease, transform 220ms ease, visibility 0s 220ms;
+  }
+
+  /* Toggle via .active when isMenuOpen is true */
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 220ms ease, transform 220ms ease;
+  }
+
+  .nav-link {
+    width: 100%;
+    padding: 14px 12px;
+    border-radius: 12px;
+    font-size: 1rem;
+  }
+
+  .nav-link::after {
+    bottom: 8px;
+  }
 }
 
-@media (min-width: 1024px) {
-  .navbar {
-    padding: 1.5rem 3rem;
+/* XL refinements */
+@media (min-width: 1201px) {
+  .nav-links {
+    gap: 28px;
   }
-
-  .navbar-logo {
-    font-size: 2rem;
+  .nav-link {
+    padding: 10px 14px;
   }
+}
 
-  .nav-links a {
-    font-size: 1.2rem;
+/* Focus states */
+.nav-link:focus-visible,
+.hamburger:focus-visible,
+.logo:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 3px
+    color-mix(in oklab, var(--color-accent) 45%, transparent);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .nav-link,
+  .hamburger,
+  .nav-links {
+    transition: none;
   }
 }
